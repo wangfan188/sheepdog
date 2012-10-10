@@ -117,6 +117,7 @@ struct cluster_info {
 
 #define CACHE_TYPE_OBJECT 0x1
 #define CACHE_TYPE_DISK   0x2
+#define CACHE_TYPE_PAGE   0x4
 	int enabled_cache_type;
 
 	uint32_t object_cache_size;
@@ -415,6 +416,11 @@ static inline bool is_object_cache_enabled(void)
 static inline bool is_disk_cache_enabled(void)
 {
 	return !!(sys->enabled_cache_type & CACHE_TYPE_DISK);
+}
+
+static inline bool is_page_cache_enabled(void)
+{
+	return !!(sys->enabled_cache_type & CACHE_TYPE_PAGE);
 }
 
 #endif

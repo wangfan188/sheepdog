@@ -665,7 +665,7 @@ static int local_flush_vdi(struct request *req)
 			return ret;
 	}
 
-	if (is_disk_cache_enabled()) {
+	if (is_disk_cache_enabled() || is_page_cache_enabled()) {
 		struct sd_req hdr;
 
 		sd_init_req(&hdr, SD_OP_FLUSH_NODES);

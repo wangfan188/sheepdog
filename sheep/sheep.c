@@ -272,6 +272,12 @@ static void disk_cache_set(char *s)
 	sys->enabled_cache_type |= CACHE_TYPE_DISK;
 }
 
+static void page_cache_set(char *s)
+{
+	assert(!strcmp(s, "page"));
+	sys->enabled_cache_type |= CACHE_TYPE_PAGE;
+}
+
 static void do_cache_type(char *s)
 {
 	int i;
@@ -283,6 +289,7 @@ static void do_cache_type(char *s)
 	struct cache_type cache_types[] = {
 		{ "object", object_cache_set },
 		{ "disk", disk_cache_set },
+		{ "page", page_cache_set },
 		{ NULL, NULL },
 	};
 
