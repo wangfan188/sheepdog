@@ -278,6 +278,12 @@ static void page_cache_set(char *s)
 	sys->enabled_cache_type |= CACHE_TYPE_PAGE;
 }
 
+static void unsafe_cache_set(char *s)
+{
+	assert(!strcmp(s, "unsafe"));
+	sys->enabled_cache_type |= CACHE_TYPE_UNSAFE;
+}
+
 static void do_cache_type(char *s)
 {
 	int i;
@@ -290,6 +296,7 @@ static void do_cache_type(char *s)
 		{ "object", object_cache_set },
 		{ "disk", disk_cache_set },
 		{ "page", page_cache_set },
+		{ "unsafe", unsafe_cache_set },
 		{ NULL, NULL },
 	};
 
