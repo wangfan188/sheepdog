@@ -229,4 +229,14 @@ struct vdi_op_message {
 	uint8_t data[0];
 };
 
+enum cluster_join_result {
+	CJ_RES_SUCCESS, /* Success */
+	CJ_RES_FAIL, /* Fail to join.  The joining node has an invalidepoch. */
+	CJ_RES_JOIN_LATER, /* Fail to join.  The joining node should
+			    * be added after the cluster start working. */
+	CJ_RES_MASTER_TRANSFER, /* Transfer mastership.  The joining
+				 * node has a newer epoch, so this node
+				 * will leave the cluster (restart later). */
+};
+
 #endif /* __INTERNAL_PROTO_H__ */
